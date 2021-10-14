@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/user.dart';
 import '../data/heros_data.dart';
+import './user_profile.dart';
 
 class SearchUsers extends StatefulWidget {
   SearchUsers({Key? key}) : super(key: key);
@@ -37,7 +38,15 @@ class _SearchUsersState extends State<SearchUsers> {
         ),
         title: Text(user.name),
         subtitle: Text(user.powers),
+        onTap: () => _pushProfile(user),
       );
+
+  void _pushProfile(User user) {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (BuildContext context) {
+      return UserProfile(user: user);
+    }));
+  }
 
   @override
   Widget build(BuildContext context) {
