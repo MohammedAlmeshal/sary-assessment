@@ -36,6 +36,5 @@ class _UserProfileState extends State<UserProfile> {
                 Text(widget.user.name)
               ],
             )));
-    ;
   }
 }
