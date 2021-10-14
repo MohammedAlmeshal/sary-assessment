@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+
 import '../models/user.dart';
 
 class UserProfile extends StatefulWidget {
   final User user;
+  final Function updateRating;
 
   UserProfile({
     Key? key,
     required this.user,
+    required this.updateRating,
   }) : super(key: key);
 
   @override
@@ -19,21 +23,31 @@ class _UserProfileState extends State<UserProfile> {
     return Scaffold(
         appBar: AppBar(title: Text(widget.user.name)),
         body: Container(
-            height: 400,
             width: double.infinity,
-            decoration: BoxDecoration(color: Colors.blue),
+            decoration: BoxDecoration(color: Colors.grey),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                SizedBox(
-                  height: 200.0,
-                ),
                 CircleAvatar(
                   radius: 50.0,
                   backgroundImage: NetworkImage(widget.user.imageURL),
                   backgroundColor: Colors.lightBlue,
                 ),
-                Text(widget.user.name)
+                Text(widget.user.name),
+                RatingBar.builder(
+                  glowColor: Colors.amber,
+                  initialRating: widget.user.rating,
+                  minRating: 0,
+                  direction: Axis.horizontal,
+                  itemCount: 5,
+                  itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                  itemBuilder: (context, _) => Icon(
+                    Icons.star,
+                    color: Colors.amber,
+                  ),
+                  onRatingUpdate: (rating) =>
+                      widget.updateRating(rating, widget.user.id),
+                )
               ],
             )));
   }

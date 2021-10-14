@@ -3,13 +3,13 @@ class User {
   final String name;
   final String powers;
   final String imageURL;
-  final int? rating;
+  double rating;
 
-  const User({
+  User({
     required this.id,
     required this.name,
     required this.powers,
     required this.imageURL,
-    this.rating,
+    required this.rating,
   });
 }
