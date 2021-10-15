@@ -1,27 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../providers/users_model.dart';
 
-class SearchBar extends StatefulWidget {
+class SearchBar extends StatelessWidget {
   final String text;
-  final ValueChanged<String> onChanged;
   final String hintText;
 
-  const SearchBar({
+  SearchBar({
     Key? key,
     required this.text,
-    required this.onChanged,
     required this.hintText,
   }) : super(key: key);
 
-  @override
-  _SearchBarState createState() => _SearchBarState();
-}
-
-class _SearchBarState extends State<SearchBar> {
   final controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     final style = TextStyle(color: Colors.black26);
+
+    void onChanged(String query) {
+      Provider.of<UsersModel>(context, listen: false).changeSearchString(query);
+    }
 
     return Container(
       height: 40,
@@ -39,15 +38,15 @@ class _SearchBarState extends State<SearchBar> {
             child: Icon(Icons.cancel, color: style.color),
             onTap: () {
               controller.clear();
-              widget.onChanged('');
+              onChanged('');
             },
           ),
-          hintText: widget.hintText,
+          hintText: hintText,
           hintStyle: style,
           border: InputBorder.none,
         ),
         style: style,
-        onChanged: widget.onChanged,
+        onChanged: (query) => onChanged(query),
       ),
     );
   }

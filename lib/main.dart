@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'screens/search_users.dart';
-import './models/user.dart';
+import './providers/users_model.dart';
 
 void main() => runApp(MyApp());
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../models/user.dart';
-import '../data/heros_data.dart';
+import '../providers/users_model.dart';
 import './user_profile.dart';
 import '../widgets/search_bar.dart';
 
@@ -79,28 +79,12 @@ class _SearchUsersState extends State<SearchUsers> {
           textAlign: TextAlign.center,
           softWrap: false,
         );
-        customSearchBar =
-            SearchBar(text: query, hintText: 'Search', onChanged: searchUsers);
+        customSearchBar = SearchBar(text: query, hintText: 'Search');
       } else {
         customIcon = const Icon(Icons.search);
         customSearchBar = const Text('Heros');
       }
     });
-  }
-
-  void searchUsers(String query) {
-    Provider.of<UsersModel>(context, listen: false).changeSearchString(query);
-//     final users = allUsers.where((user) {
-//       final titleLower = user.name.toLowerCase();
-//       final searchLower = query.toLowerCase();
-//
-//       return titleLower.contains(searchLower);
-//     }).toList();
-//
-//     setState(() {
-//       this.query = query;
-//       this.users = users;
-//     });
   }
 
   void _showSortDialog() async {
