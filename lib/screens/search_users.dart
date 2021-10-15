@@ -5,6 +5,7 @@ import '../models/user.dart';
 import '../providers/users_model.dart';
 import './user_profile.dart';
 import '../widgets/search_bar.dart';
+import '../widgets/sort_dialog.dart';
 
 class SearchUsers extends StatefulWidget {
   final List<User> users;
@@ -59,14 +60,10 @@ class _SearchUsersState extends State<SearchUsers> {
         onTap: () => _pushProfile(user),
       );
 
-  void updateRating(double rating, int id) {
-    Provider.of<UsersModel>(context, listen: false).updateRating(rating, id);
-  }
-
   void _pushProfile(User user) {
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (BuildContext context) {
-      return UserProfile(user: user, updateRating: updateRating);
+      return UserProfile(user: user);
     }));
   }
 
@@ -139,8 +136,7 @@ class _SearchUsersState extends State<SearchUsers> {
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(65.0),
             child: AppBar(
-                leading: IconButton(
-                    icon: Icon(Icons.sort), onPressed: _showSortDialog),
+                leading: SortDialog(),
                 title: AnimatedSwitcher(
                     duration: const Duration(milliseconds: 200),
                     child: customSearchBar),

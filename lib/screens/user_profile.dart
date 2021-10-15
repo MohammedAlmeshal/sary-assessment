@@ -6,12 +6,10 @@ import '../widgets/rate_dialog.dart';
 
 class UserProfile extends StatelessWidget {
   final User user;
-  final Function updateRating;
 
   UserProfile({
     Key? key,
     required this.user,
-    required this.updateRating,
   }) : super(key: key);
 
   @override
