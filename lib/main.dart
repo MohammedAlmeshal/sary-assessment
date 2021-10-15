@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'screens/search_users.dart';
+import 'screens/home.dart';
 import './providers/users_model.dart';
 
 void main() => runApp(MyApp());
@@ -14,6 +14,6 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(primaryColor: Colors.green),
             home: Consumer<UsersModel>(
                 builder: (context, users, child) =>
-                    SearchUsers(users: users.allUsers))));
+                    Home(users: users.allUsers))));
   }
 }

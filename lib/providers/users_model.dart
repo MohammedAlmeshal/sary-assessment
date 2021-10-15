@@ -13,21 +13,20 @@ class UsersModel extends ChangeNotifier {
   // }
 
   final List<User> _users = allUsersData.allUsers;
-  String _searchString = "";
+  String searchString = "";
   late SortBy _sortByProperty = SortBy.name;
 
-  List<User> get allUsers => _searchString.isEmpty
+  List<User> get allUsers => searchString.isEmpty
       ? _users
       : _users.where((user) {
           final titleLower = user.name.toLowerCase();
-          final searchLower = _searchString.toLowerCase();
+          final searchLower = searchString.toLowerCase();
 
           return titleLower.contains(searchLower);
         }).toList();
 
-  void changeSearchString(String searchString) {
-    _searchString = searchString;
-    print(_searchString);
+  void changeSearchString(String query) {
+    searchString = query;
     notifyListeners();
   }
 

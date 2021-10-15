@@ -2,14 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/users_model.dart';
 
-class SearchBar extends StatelessWidget {
-  final String text;
-  final String hintText;
-
-  SearchBar({
+class SearchField extends StatelessWidget {
+  SearchField({
     Key? key,
-    required this.text,
-    required this.hintText,
   }) : super(key: key);
 
   final controller = TextEditingController();
@@ -41,7 +36,7 @@ class SearchBar extends StatelessWidget {
               onChanged('');
             },
           ),
-          hintText: hintText,
+          hintText: 'Search',
           hintStyle: style,
           border: InputBorder.none,
         ),

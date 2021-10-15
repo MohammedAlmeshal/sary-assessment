@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
 import '../models/user.dart';
-import '../widgets/search_bar.dart';
+import '../widgets/search_field.dart';
 import '../widgets/sort_dialog.dart';
 import '../widgets/user_list.dart';
 
-class SearchUsers extends StatefulWidget {
+class Home extends StatefulWidget {
   final List<User> users;
-  SearchUsers({Key? key, required this.users}) : super(key: key);
+  Home({Key? key, required this.users}) : super(key: key);
 
   @override
-  _SearchUsersState createState() => _SearchUsersState();
+  _HomeState createState() => _HomeState();
 }
 
-class _SearchUsersState extends State<SearchUsers> {
+class _HomeState extends State<Home> {
   dynamic customIcon = const Icon(Icons.search);
   Widget customSearchBar = const Text('Heros');
   bool expanded = false;
-  String query = '';
   late String dropdownValue = 'Name';
 
   void _expandSearch() {
@@ -28,7 +27,7 @@ class _SearchUsersState extends State<SearchUsers> {
           textAlign: TextAlign.center,
           softWrap: false,
         );
-        customSearchBar = SearchBar(text: query, hintText: 'Search');
+        customSearchBar = SearchField();
       } else {
         customIcon = const Icon(Icons.search);
         customSearchBar = const Text('Heros');
@@ -36,19 +35,22 @@ class _SearchUsersState extends State<SearchUsers> {
     });
   }
 
+  Widget _customTitle() => AnimatedSwitcher(
+      duration: const Duration(milliseconds: 200), child: customSearchBar);
+
+  List<Widget> _customActions() =>
+      ([IconButton(onPressed: _expandSearch, icon: customIcon)]);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(65.0),
             child: AppBar(
-                leading: SortDialog(),
-                title: AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 200),
-                    child: customSearchBar),
-                actions: [
-                  IconButton(onPressed: _expandSearch, icon: customIcon),
-                ])),
+              leading: SortDialog(),
+              title: _customTitle(),
+              actions: _customActions(),
+            )),
         body: UserList(users: widget.users));
   }
 }
