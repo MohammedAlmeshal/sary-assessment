@@ -9,11 +9,15 @@ class UserList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        itemCount: users.length,
-        itemBuilder: (context, index) {
-          final user = users[index];
-          return ListItem(user: user);
-        });
+    return ListView.separated(
+      itemCount: users.length,
+      itemBuilder: (context, index) {
+        final user = users[index];
+        return ListItem(user: user);
+      },
+      separatorBuilder: (context, index) {
+        return Divider();
+      },
+    );
   }
 }

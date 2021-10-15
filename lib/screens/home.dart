@@ -16,7 +16,6 @@ class _HomeState extends State<Home> {
   dynamic customIcon = const Icon(Icons.search);
   Widget customSearchBar = const Text('Heros');
   bool expanded = false;
-  late String dropdownValue = 'Name';
 
   void _expandSearch() {
     setState(() {
@@ -45,12 +44,12 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: PreferredSize(
-            preferredSize: Size.fromHeight(65.0),
+            preferredSize: Size.fromHeight(70.0),
             child: AppBar(
-              leading: SortDialog(),
-              title: _customTitle(),
-              actions: _customActions(),
-            )),
+                leading: SortDialog(),
+                title: _customTitle(),
+                actions: _customActions(),
+                iconTheme: IconThemeData(color: Colors.lightGreenAccent[700]))),
         body: UserList(users: widget.users));
   }
 }

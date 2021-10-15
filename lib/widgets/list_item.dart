@@ -27,7 +27,7 @@ class _ListItemState extends State<ListItem> {
         itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
         itemBuilder: (context, _) => Icon(
           Icons.star,
-          color: Colors.amber,
+          color: Colors.green,
         ),
         itemSize: 20,
         onRatingUpdate: (rating) {},

@@ -6,12 +6,19 @@ import './providers/users_model.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  ThemeData _dark = ThemeData.dark().copyWith(
+      primaryColor: Colors.black,
+      scaffoldBackgroundColor: Colors.black,
+      dialogBackgroundColor: Color(0xFF121212),
+      dividerColor: Colors.grey,
+      accentColor: Colors.green);
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<UsersModel>(
         create: (context) => UsersModel(),
         child: MaterialApp(
-            theme: ThemeData(primaryColor: Colors.green),
+            theme: _dark,
             home: Consumer<UsersModel>(
                 builder: (context, users, child) =>
                     Home(users: users.allUsers))));
