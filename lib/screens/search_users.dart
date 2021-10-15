@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../models/user.dart';
 import '../data/heros_data.dart';
@@ -6,30 +7,24 @@ import './user_profile.dart';
 import '../widgets/search_bar.dart';
 
 class SearchUsers extends StatefulWidget {
-  SearchUsers({Key? key}) : super(key: key);
+  final List<User> users;
+  SearchUsers({Key? key, required this.users}) : super(key: key);
 
   @override
   _SearchUsersState createState() => _SearchUsersState();
 }
 
 class _SearchUsersState extends State<SearchUsers> {
-  late List<User> users;
   dynamic customIcon = const Icon(Icons.search);
   Widget customSearchBar = const Text('Heros');
   bool expanded = false;
   String query = '';
   late String dropdownValue = 'Name';
 
-  @override
-  void initState() {
-    super.initState();
-    users = allUsers;
-  }
-
   Widget _buildList() => ListView.builder(
-      itemCount: users.length,
+      itemCount: widget.users.length,
       itemBuilder: (context, index) {
-        final user = users[index];
+        final user = widget.users[index];
         return _buildRow(user);
       });
 
@@ -64,24 +59,8 @@ class _SearchUsersState extends State<SearchUsers> {
         onTap: () => _pushProfile(user),
       );
 
-  // List<Icon> _starRatings(double rating) {
-  //   List<Icon> stars = [];
-  //   for (int i = 0; i < 5; i++) {
-  //     stars.add(Icon(Icons.star,
-  //         size: 20, color: i >= rating ? Colors.grey : Colors.amber));
-  //   }
-  //   return stars;
-  // }
-
   void updateRating(double rating, int id) {
-    // check it correct
-    final index = allUsers.indexWhere((user) => user.id == id);
-    print(rating);
-    allUsers[index].rating = rating;
-
-    setState(() {
-      this.users = allUsers;
-    });
+    Provider.of<UsersModel>(context, listen: false).updateRating(rating, id);
   }
 
   void _pushProfile(User user) {
@@ -110,21 +89,22 @@ class _SearchUsersState extends State<SearchUsers> {
   }
 
   void searchUsers(String query) {
-    final users = allUsers.where((user) {
-      final titleLower = user.name.toLowerCase();
-      final searchLower = query.toLowerCase();
-
-      return titleLower.contains(searchLower);
-    }).toList();
-
-    setState(() {
-      this.query = query;
-      this.users = users;
-    });
+    Provider.of<UsersModel>(context, listen: false).changeSearchString(query);
+//     final users = allUsers.where((user) {
+//       final titleLower = user.name.toLowerCase();
+//       final searchLower = query.toLowerCase();
+//
+//       return titleLower.contains(searchLower);
+//     }).toList();
+//
+//     setState(() {
+//       this.query = query;
+//       this.users = users;
+//     });
   }
 
   void _showSortDialog() async {
-    switch (await showDialog<String>(
+    switch (await showDialog<SortBy>(
         context: context,
         builder: (BuildContext context) {
           return SimpleDialog(
@@ -132,39 +112,36 @@ class _SearchUsersState extends State<SearchUsers> {
             children: <Widget>[
               SimpleDialogOption(
                 onPressed: () {
-                  Navigator.pop(context, 'Name');
+                  Navigator.pop(context, SortBy.name);
                 },
                 child: const Text('Name'),
               ),
               SimpleDialogOption(
                 onPressed: () {
-                  Navigator.pop(context, 'Power');
+                  Navigator.pop(context, SortBy.powers);
                 },
                 child: const Text('Power'),
               ),
               SimpleDialogOption(
                 onPressed: () {
-                  Navigator.pop(context, 'Rating');
+                  Navigator.pop(context, SortBy.rating);
                 },
                 child: const Text('Rating'),
               ),
             ],
           );
         })) {
-      case 'Name':
-        setState(() {
-          this.users.sort((a, b) => a.name.compareTo(b.name));
-        });
+      case SortBy.name:
+        Provider.of<UsersModel>(context, listen: false).sortBy(SortBy.name);
+
         break;
-      case 'Power':
-        setState(() {
-          this.users.sort((a, b) => a.powers.compareTo(b.powers));
-        });
+      case SortBy.powers:
+        Provider.of<UsersModel>(context, listen: false).sortBy(SortBy.powers);
+
         break;
-      case 'Rating':
-        setState(() {
-          this.users.sort((a, b) => b.rating.compareTo(a.rating));
-        });
+      case SortBy.rating:
+        Provider.of<UsersModel>(context, listen: false).sortBy(SortBy.rating);
+
         break;
       case null:
         // dialog dismissed
