@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-
 import '../models/user.dart';
 
-class UserProfile extends StatefulWidget {
+import '../widgets/rate_dialog.dart';
+
+class UserProfile extends StatelessWidget {
   final User user;
   final Function updateRating;
 
@@ -14,14 +15,9 @@ class UserProfile extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _UserProfileState createState() => _UserProfileState();
-}
-
-class _UserProfileState extends State<UserProfile> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text(widget.user.name)),
+        appBar: AppBar(title: Text(user.name)),
         body: Container(
             width: double.infinity,
             decoration: BoxDecoration(color: Colors.grey),
@@ -30,24 +26,11 @@ class _UserProfileState extends State<UserProfile> {
               children: <Widget>[
                 CircleAvatar(
                   radius: 50.0,
-                  backgroundImage: NetworkImage(widget.user.imageURL),
+                  backgroundImage: NetworkImage(user.imageURL),
                   backgroundColor: Colors.lightBlue,
                 ),
-                Text(widget.user.name),
-                RatingBar.builder(
-                  glowColor: Colors.amber,
-                  initialRating: widget.user.rating,
-                  minRating: 0,
-                  direction: Axis.horizontal,
-                  itemCount: 5,
-                  itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-                  itemBuilder: (context, _) => Icon(
-                    Icons.star,
-                    color: Colors.amber,
-                  ),
-                  onRatingUpdate: (rating) =>
-                      widget.updateRating(rating, widget.user.id),
-                )
+                Text(user.name),
+                RateDialog(user: user)
               ],
             )));
   }
