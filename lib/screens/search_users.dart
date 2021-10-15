@@ -123,57 +123,54 @@ class _SearchUsersState extends State<SearchUsers> {
     });
   }
 
-  void _showFilter() => showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-            title: const Text('Filter'),
-            content: Row(children: [
-              Text('Sort By'),
-              DropdownButton<String>(
-                value: dropdownValue,
-                icon: const Icon(Icons.arrow_downward),
-                iconSize: 24,
-                elevation: 16,
-                style: const TextStyle(color: Colors.deepPurple),
-                underline: Container(
-                  height: 2,
-                  color: Colors.deepPurpleAccent,
-                ),
-                onChanged: (String? newValue) {
-                  setState(() {
-                    dropdownValue = newValue!;
-                  });
-                },
-                items: <String>['Name', 'Power']
-                    .map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-              )
-            ]),
-            actions: <Widget>[
-              TextButton(
-                onPressed: () => Navigator.pop(context, 'Cancel'),
-                child: const Text('Cancel'),
-              ),
-              TextButton(
+  void _showSortDialog() async {
+    switch (await showDialog<String>(
+        context: context,
+        builder: (BuildContext context) {
+          return SimpleDialog(
+            title: const Text('Sort By'),
+            children: <Widget>[
+              SimpleDialogOption(
                 onPressed: () {
-                  Navigator.pop(context, 'Apply');
-                  setState(() {
-                    if (dropdownValue == 'Power') {
-                      this.users.sort((a, b) => b.rating.compareTo(a.rating));
-                    } else {
-                      this.users.sort((a, b) => a.name.compareTo(b.name));
-                    }
-                  });
+                  Navigator.pop(context, 'Name');
                 },
-                child: const Text('Apply'),
+                child: const Text('Name'),
               ),
-            ]);
-      });
+              SimpleDialogOption(
+                onPressed: () {
+                  Navigator.pop(context, 'Power');
+                },
+                child: const Text('Power'),
+              ),
+              SimpleDialogOption(
+                onPressed: () {
+                  Navigator.pop(context, 'Rating');
+                },
+                child: const Text('Rating'),
+              ),
+            ],
+          );
+        })) {
+      case 'Name':
+        setState(() {
+          this.users.sort((a, b) => a.name.compareTo(b.name));
+        });
+        break;
+      case 'Power':
+        setState(() {
+          this.users.sort((a, b) => a.powers.compareTo(b.powers));
+        });
+        break;
+      case 'Rating':
+        setState(() {
+          this.users.sort((a, b) => b.rating.compareTo(a.rating));
+        });
+        break;
+      case null:
+        // dialog dismissed
+        break;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -181,8 +178,8 @@ class _SearchUsersState extends State<SearchUsers> {
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(65.0),
             child: AppBar(
-                leading:
-                    IconButton(icon: Icon(Icons.sort), onPressed: _showFilter),
+                leading: IconButton(
+                    icon: Icon(Icons.sort), onPressed: _showSortDialog),
                 title: AnimatedSwitcher(
                     duration: const Duration(milliseconds: 200),
                     child: customSearchBar),
