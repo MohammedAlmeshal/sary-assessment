@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../data/heros_data.dart' as allUsersData;
+import 'package:flutter/services.dart' show rootBundle;
+import 'dart:convert';
 
 class User {
   final int id;
@@ -19,11 +21,31 @@ class User {
   void updateRating(double rating) {
     this.rating = rating;
   }
+
+  User.fromJson(Map<String, dynamic> json)
+      : id = json['id'],
+        name = json['name'],
+        powers = json['powers'],
+        imageURL = json['imageURL'],
+        rating = json['rating'];
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'name': name,
+        'powers': powers,
+        'imageURL': imageURL,
+        'rating': rating,
+      };
 }
 
 enum SortBy { name, powers, rating }
 
 class UsersModel extends ChangeNotifier {
+  // Future<void> fetchUsers() async {
+  //   final List users = json.decode(await rootBundle.loadString('data.json'));
+  //   _users = users.map((json) => User.fromJson(json)) as List<User>;
+  // }
+
   final List<User> _users = allUsersData.allUsers;
   String _searchString = "";
   late SortBy _sortByProperty = SortBy.name;
