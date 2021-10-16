@@ -25,6 +25,7 @@ class UsersModel extends ChangeNotifier {
   }
 
   SortBy get sortByProperty => _sortByProperty;
+  String get searchString => _searchString;
 
   void changeSearchString(String query) {
     _searchString = query;

@@ -28,13 +28,15 @@ class SearchField extends StatelessWidget {
         controller: controller,
         decoration: InputDecoration(
           icon: Icon(Icons.search, color: style.color),
-          suffixIcon: GestureDetector(
-            child: Icon(Icons.cancel, color: style.color),
-            onTap: () {
-              controller.clear();
-              onChanged('');
-            },
-          ),
+          suffixIcon: Provider.of<UsersModel>(context).searchString.isNotEmpty
+              ? GestureDetector(
+                  child: Icon(Icons.cancel, color: style.color),
+                  onTap: () {
+                    controller.clear();
+                    onChanged('');
+                  },
+                )
+              : null,
           hintText: 'Search',
           hintStyle: style,
           border: InputBorder.none,
