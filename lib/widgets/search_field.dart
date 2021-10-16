@@ -11,7 +11,7 @@ class SearchField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final style = TextStyle(color: Colors.black26);
+    final style = TextStyle(color: Colors.white12);
 
     void onChanged(String query) {
       Provider.of<UsersModel>(context, listen: false).changeSearchString(query);
@@ -21,7 +21,7 @@ class SearchField extends StatelessWidget {
       height: 40,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: Colors.white38,
+        color: Colors.grey[900],
       ),
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: TextField(

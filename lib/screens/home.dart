@@ -13,22 +13,28 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  dynamic customIcon = const Icon(Icons.search);
   Widget customSearchBar = const Text('Heros');
+  Widget customIcon = Icon(Icons.search);
   bool expanded = false;
 
   void _expandSearch() {
     setState(() {
       expanded = !expanded;
       if (expanded) {
-        customIcon = const Text(
-          'Close',
-          textAlign: TextAlign.center,
-          softWrap: false,
+        customIcon = TextButton(
+          style: ElevatedButton.styleFrom(
+              primary: Colors.transparent,
+              onPrimary: Colors.transparent,
+              shape: new RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(30.0))),
+          onPressed: _expandSearch,
+          child: Text('Close', style: TextStyle(color: Colors.white)),
         );
         customSearchBar = SearchField();
       } else {
-        customIcon = const Icon(Icons.search);
+        customIcon =
+            IconButton(icon: Icon(Icons.search), onPressed: _expandSearch);
+
         customSearchBar = const Text('Heros');
       }
     });
@@ -37,8 +43,7 @@ class _HomeState extends State<Home> {
   Widget _customTitle() => AnimatedSwitcher(
       duration: const Duration(milliseconds: 200), child: customSearchBar);
 
-  List<Widget> _customActions() =>
-      ([IconButton(onPressed: _expandSearch, icon: customIcon)]);
+  List<Widget> _customActions() => ([customIcon]);
 
   @override
   Widget build(BuildContext context) {
@@ -46,10 +51,17 @@ class _HomeState extends State<Home> {
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(70.0),
             child: AppBar(
-                leading: SortDialog(),
-                title: _customTitle(),
-                actions: _customActions(),
-                iconTheme: IconThemeData(color: Colors.lightGreenAccent[700]))),
+              leading: SortDialog(),
+              title: _customTitle(),
+              actions: _customActions(),
+              iconTheme: IconThemeData(color: Colors.lightGreenAccent[700]),
+              bottom: PreferredSize(
+                  child: Container(
+                    color: Colors.green,
+                    height: 0.5,
+                  ),
+                  preferredSize: Size.fromHeight(0.5)),
+            )),
         body: UserList(users: widget.users));
   }
 }

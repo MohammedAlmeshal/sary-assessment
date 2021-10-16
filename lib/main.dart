@@ -11,7 +11,22 @@ class MyApp extends StatelessWidget {
       scaffoldBackgroundColor: Colors.black,
       dialogBackgroundColor: Color(0xFF121212),
       dividerColor: Colors.grey,
-      accentColor: Colors.green);
+      accentColor: Colors.green,
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+            primary: Colors.green,
+            onPrimary: Colors.black,
+            shape: new RoundedRectangleBorder(
+                borderRadius: new BorderRadius.circular(30.0))),
+        // ButtonStyle(
+        //     backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
+        //     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+        //         RoundedRectangleBorder(
+        //       borderRadius: BorderRadius.circular(18.0),
+        //     )))
+        //
+        //ElevatedButton.styleFrom(primary: Colors.green
+      ));
 
   @override
   Widget build(BuildContext context) {

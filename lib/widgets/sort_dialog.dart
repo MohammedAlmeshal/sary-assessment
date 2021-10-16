@@ -15,6 +15,9 @@ class _SortDialogState extends State<SortDialog> {
         context: context,
         builder: (BuildContext context) {
           return SimpleDialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
             title: const Text('Sort By'),
             children: <Widget>[
               SimpleDialogOption(

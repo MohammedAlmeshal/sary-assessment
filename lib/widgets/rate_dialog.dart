@@ -10,10 +10,13 @@ class RateDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
+    return ElevatedButton(
       onPressed: () => showDialog<String>(
         context: context,
         builder: (BuildContext context) => AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
           title: const Text('Rate'),
           content: Column(
             mainAxisSize: MainAxisSize.min,
@@ -33,7 +36,7 @@ class RateDialog extends StatelessWidget {
                       Provider.of<UsersModel>(context, listen: false)
                           .updateRating(rating, user.id)),
               Text('Swipe to rate'),
-              TextButton(
+              ElevatedButton(
                 onPressed: () => Navigator.pop(context, 'Submit'),
                 child: const Text('Submit'),
               )

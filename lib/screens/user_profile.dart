@@ -19,17 +19,22 @@ class UserProfile extends StatelessWidget {
         body: Container(
             width: double.infinity,
             decoration: BoxDecoration(color: Colors.grey),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                CircleAvatar(
-                  radius: 50.0,
-                  backgroundImage: NetworkImage(user.imageURL),
-                  backgroundColor: Colors.lightBlue,
-                ),
-                Text(user.name),
-                RateDialog(user: user)
-              ],
-            )));
+            child: Scaffold(
+                body: Center(
+                    child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 40),
+                        child: Column(
+                          children: <Widget>[
+                            CircleAvatar(
+                              radius: 90.0,
+                              backgroundImage: NetworkImage(user.imageURL),
+                              backgroundColor: Colors.lightBlue,
+                            ),
+                            SizedBox(height: 30),
+                            Text(user.name),
+                            SizedBox(height: 200),
+                            RateDialog(user: user)
+                          ],
+                        ))))));
   }
 }
