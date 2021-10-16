@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/users_model.dart';
 
+// shows the sort dialog in home page
 class SortDialog extends StatelessWidget {
   const SortDialog({Key? key}) : super(key: key);
 

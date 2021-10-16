@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/users_model.dart';
 
+// search field/bar widget
 class SearchField extends StatelessWidget {
   SearchField({
     Key? key,

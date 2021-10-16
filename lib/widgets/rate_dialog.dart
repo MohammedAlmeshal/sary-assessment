@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../providers/users_model.dart';
-import '../models/user.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
+import '../providers/users_model.dart';
+import '../models/user.dart';
+
+// shows the rate dialog insede hero page
 class RateDialog extends StatefulWidget {
   final User user;
 

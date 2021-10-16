@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import './rating_stars.dart';
 import '../models/user.dart';
 import '../screens/user_profile.dart';
-import './rating_stars.dart';
 
+// Shows the hero list item
 class ListItem extends StatefulWidget {
   final User user;
   const ListItem({Key? key, required this.user}) : super(key: key);
@@ -13,6 +13,7 @@ class ListItem extends StatefulWidget {
 }
 
 class _ListItemState extends State<ListItem> {
+  // go to hero profile page
   void _pushProfile(User user) {
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (BuildContext context) {

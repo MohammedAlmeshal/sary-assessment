@@ -6,6 +6,7 @@ import '../widgets/search_field.dart';
 import '../widgets/sort_dialog.dart';
 import '../widgets/user_list.dart';
 
+// home screen with hero list & search bar & sort dialog
 class Home extends StatefulWidget {
   final List<User> users;
   Home({Key? key, required this.users}) : super(key: key);

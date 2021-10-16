@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
+// render rating stars widget
 class RatingStars extends StatelessWidget {
   final double rating;
   final double size;

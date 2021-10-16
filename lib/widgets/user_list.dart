@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../providers/users_model.dart';
 import './list_item.dart';
 
+// render list of hero list tiles
 class UserList extends StatelessWidget {
   const UserList({
     Key? key,

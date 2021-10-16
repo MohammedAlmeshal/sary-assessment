@@ -6,6 +6,7 @@ import '../providers/users_model.dart';
 import '../widgets/rate_dialog.dart';
 import '../widgets/rating_stars.dart';
 
+// shows detailed hero profile
 class UserProfile extends StatelessWidget {
   final User user;
 
