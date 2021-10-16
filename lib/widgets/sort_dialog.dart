@@ -24,30 +24,52 @@ class _SortDialogState extends State<SortDialog> {
                 onPressed: () {
                   Navigator.pop(context, SortBy.name);
                 },
-                child: const Text('Name'),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text("Name"),
+                      if (Provider.of<UsersModel>(context, listen: false)
+                              .sortByProperty ==
+                          SortBy.name)
+                        Icon(Icons.done)
+                    ]),
               ),
               SimpleDialogOption(
                 onPressed: () {
                   Navigator.pop(context, SortBy.powers);
                 },
-                child: const Text('Power'),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text("Powers"),
+                      if (Provider.of<UsersModel>(context, listen: false)
+                              .sortByProperty ==
+                          SortBy.powers)
+                        Icon(Icons.done)
+                    ]),
               ),
               SimpleDialogOption(
                 onPressed: () {
                   Navigator.pop(context, SortBy.rating);
                 },
-                child: const Text('Rating'),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text("Rating"),
+                      if (Provider.of<UsersModel>(context, listen: false)
+                              .sortByProperty ==
+                          SortBy.rating)
+                        Icon(Icons.done)
+                    ]),
               ),
             ],
           );
         })) {
       case SortBy.name:
         Provider.of<UsersModel>(context, listen: false).sortBy(SortBy.name);
-
         break;
       case SortBy.powers:
         Provider.of<UsersModel>(context, listen: false).sortBy(SortBy.powers);
-
         break;
       case SortBy.rating:
         Provider.of<UsersModel>(context, listen: false).sortBy(SortBy.rating);
@@ -60,6 +82,8 @@ class _SortDialogState extends State<SortDialog> {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(icon: Icon(Icons.sort), onPressed: _showSortDialog);
+    return Consumer<UsersModel>(
+        builder: (context, users, child) =>
+            IconButton(icon: Icon(Icons.sort), onPressed: _showSortDialog));
   }
 }

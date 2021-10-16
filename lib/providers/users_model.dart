@@ -14,7 +14,7 @@ class UsersModel extends ChangeNotifier {
 
   final List<User> _users = allUsersData.allUsers;
   String searchString = "";
-  late SortBy _sortByProperty = SortBy.name;
+  SortBy _sortByProperty = SortBy.name;
 
   List<User> get allUsers => searchString.isEmpty
       ? _users
@@ -24,6 +24,8 @@ class UsersModel extends ChangeNotifier {
 
           return titleLower.contains(searchLower);
         }).toList();
+
+  SortBy get sortByProperty => _sortByProperty;
 
   void changeSearchString(String query) {
     searchString = query;
@@ -53,7 +55,7 @@ class UsersModel extends ChangeNotifier {
         _users.sort((a, b) => b.rating.compareTo(a.rating));
         break;
     }
-    print(_sortByProperty);
+
     notifyListeners();
   }
 }
