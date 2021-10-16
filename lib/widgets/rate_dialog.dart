@@ -10,41 +10,45 @@ class RateDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () => showDialog<String>(
-        context: context,
-        builder: (BuildContext context) => AlertDialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15),
+    Future<String?> _showDialog() => showDialog<String>(
+          context: context,
+          builder: (BuildContext context) => AlertDialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+            title: const Text('Rate'),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                RatingBar.builder(
+                    glowColor: Colors.amber,
+                    initialRating: user.rating,
+                    minRating: 0,
+                    direction: Axis.horizontal,
+                    itemCount: 5,
+                    itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                    itemBuilder: (context, _) => Icon(
+                          Icons.star,
+                          color: Colors.amber,
+                        ),
+                    onRatingUpdate: (rating) =>
+                        Provider.of<UsersModel>(context, listen: false)
+                            .updateRating(rating, user.id)),
+                Text('Swipe to rate'),
+                ElevatedButton(
+                  onPressed: () => Navigator.pop(context, 'Submit'),
+                  child: const Text('Submit'),
+                )
+              ],
+            ),
           ),
-          title: const Text('Rate'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              RatingBar.builder(
-                  glowColor: Colors.amber,
-                  initialRating: user.rating,
-                  minRating: 0,
-                  direction: Axis.horizontal,
-                  itemCount: 5,
-                  itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-                  itemBuilder: (context, _) => Icon(
-                        Icons.star,
-                        color: Colors.amber,
-                      ),
-                  onRatingUpdate: (rating) =>
-                      Provider.of<UsersModel>(context, listen: false)
-                          .updateRating(rating, user.id)),
-              Text('Swipe to rate'),
-              ElevatedButton(
-                onPressed: () => Navigator.pop(context, 'Submit'),
-                child: const Text('Submit'),
-              )
-            ],
-          ),
-        ),
-      ),
-      child: const Text('Show Dialog'),
-    );
+        );
+    return SizedBox(
+        width: 200,
+        height: 45,
+        child: ElevatedButton(
+            onPressed: () => _showDialog(),
+            child: const Text('Rate Hero', style: TextStyle(fontSize: 16)),
+            style: ButtonStyle()));
   }
 }

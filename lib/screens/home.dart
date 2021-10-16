@@ -14,9 +14,12 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   Widget customSearchBar = const Text('Heros');
-  Widget customIcon = Icon(Icons.search);
+  late Widget customIcon;
   bool expanded = false;
 
+  _HomeState() {
+    customIcon = IconButton(icon: Icon(Icons.search), onPressed: _expandSearch);
+  }
   void _expandSearch() {
     setState(() {
       expanded = !expanded;
@@ -63,7 +66,7 @@ class _HomeState extends State<Home> {
               iconTheme: IconThemeData(color: Colors.lightGreenAccent[700]),
               bottom: PreferredSize(
                   child: Container(
-                    color: Colors.green,
+                    color: Theme.of(context).accentColor,
                     height: 0.5,
                   ),
                   preferredSize: Size.fromHeight(0.5)),
