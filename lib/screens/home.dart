@@ -41,7 +41,13 @@ class _HomeState extends State<Home> {
   }
 
   Widget _customTitle() => AnimatedSwitcher(
-      duration: const Duration(milliseconds: 200), child: customSearchBar);
+      duration: const Duration(milliseconds: 250),
+      transitionBuilder: (Widget child, Animation<double> animation) =>
+          SlideTransition(
+              position: Tween<Offset>(begin: Offset(1.2, 0), end: Offset(0, 0))
+                  .animate(animation),
+              child: child),
+      child: customSearchBar);
 
   List<Widget> _customActions() => ([customIcon]);
 

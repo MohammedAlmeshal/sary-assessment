@@ -27,7 +27,6 @@ class SearchField extends StatelessWidget {
       child: TextField(
         controller: controller,
         decoration: InputDecoration(
-          fillColor: Colors.red,
           icon: Icon(Icons.search, color: style.color),
           suffixIcon: GestureDetector(
             child: Icon(Icons.cancel, color: style.color),
@@ -40,7 +39,7 @@ class SearchField extends StatelessWidget {
           hintStyle: style,
           border: InputBorder.none,
         ),
-        style: style,
+        style: TextStyle(color: Colors.white),
         onChanged: (query) => onChanged(query),
       ),
     );
