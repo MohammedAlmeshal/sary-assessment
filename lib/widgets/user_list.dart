@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
-import '../models/user.dart';
+import 'package:provider/provider.dart';
+import '../providers/users_model.dart';
 import './list_item.dart';
 
 class UserList extends StatelessWidget {
-  final List<User> users;
-
-  const UserList({Key? key, required this.users}) : super(key: key);
+  const UserList({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      itemCount: users.length,
-      itemBuilder: (context, index) {
-        final user = users[index];
-        return ListItem(user: user);
-      },
-      separatorBuilder: (context, index) {
-        return Divider();
-      },
-    );
+    return Consumer<UsersModel>(
+        builder: (context, users, child) => ListView.separated(
+              itemCount: users.allUsers.length,
+              itemBuilder: (context, index) {
+                final user = users.allUsers[index];
+                return ListItem(user: user);
+              },
+              separatorBuilder: (context, index) {
+                return Divider();
+              },
+            ));
   }
 }

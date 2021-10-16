@@ -73,7 +73,6 @@ class _SortDialogState extends State<SortDialog> {
         break;
       case SortBy.rating:
         Provider.of<UsersModel>(context, listen: false).sortBy(SortBy.rating);
-
         break;
       case null:
         break;

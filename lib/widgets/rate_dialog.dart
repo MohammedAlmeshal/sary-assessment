@@ -4,13 +4,21 @@ import '../providers/users_model.dart';
 import '../models/user.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-class RateDialog extends StatelessWidget {
+class RateDialog extends StatefulWidget {
   final User user;
+
   const RateDialog({Key? key, required this.user}) : super(key: key);
+
+  @override
+  _RateDialigState createState() => _RateDialigState();
+}
+
+class _RateDialigState extends State<RateDialog> {
+  late double rating = widget.user.rating;
 
   Widget _ratingBar(context) => RatingBar.builder(
       glowColor: Theme.of(context).accentColor,
-      initialRating: user.rating,
+      initialRating: widget.user.rating,
       minRating: 0,
       direction: Axis.horizontal,
       itemCount: 5,
@@ -19,9 +27,10 @@ class RateDialog extends StatelessWidget {
             Icons.star,
             color: Theme.of(context).accentColor,
           ),
-      onRatingUpdate: (rating) =>
-          Provider.of<UsersModel>(context, listen: false)
-              .updateRating(rating, user.id));
+      onRatingUpdate: (newRating) => setState(() {
+            rating = newRating;
+          }));
+
   @override
   Widget build(BuildContext context) {
     Future<String?> _showDialog() => showDialog<String>(
@@ -42,7 +51,11 @@ class RateDialog extends StatelessWidget {
                 SizedBox(
                     width: 120,
                     child: ElevatedButton(
-                      onPressed: () => Navigator.pop(context, 'Submit'),
+                      onPressed: () {
+                        Provider.of<UsersModel>(context, listen: false)
+                            .updateRating(rating, widget.user.id);
+                        Navigator.pop(context, 'Submit');
+                      },
                       child: const Text('Submit'),
                     ))
               ],

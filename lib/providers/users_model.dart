@@ -1,24 +1,18 @@
 import 'package:flutter/material.dart';
 import '../models/user.dart';
 import '../data/heros_data.dart' as allUsersData;
-// import 'package:flutter/services.dart' show rootBundle;
-// import 'dart:convert';
 
 enum SortBy { name, powers, rating }
 
 class UsersModel extends ChangeNotifier {
-  // Future<void> fetchUsers() async {
-  //   final List users = json.decode(await rootBundle.loadString('data.json'));
-  //   _users = users.map((json) => User.fromJson(json)) as List<User>;
-  // }
-
   final List<User> _users = allUsersData.allUsers;
 
   String _searchString = "";
   SortBy _sortByProperty = SortBy.name;
 
   List<User> get allUsers {
-    if (_sortByProperty == SortBy.name) sortBy(SortBy.name);
+    if (_sortByProperty == SortBy.name)
+      _users.sort((a, b) => a.name.compareTo(b.name));
 
     return _searchString.isEmpty
         ? _users

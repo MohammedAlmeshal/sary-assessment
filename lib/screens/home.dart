@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../providers/users_model.dart';
 import '../models/user.dart';
 import '../widgets/search_field.dart';
 import '../widgets/sort_dialog.dart';
@@ -73,6 +71,6 @@ class _HomeState extends State<Home> {
                   ),
                   preferredSize: Size.fromHeight(0.5)),
             )),
-        body: UserList(users: widget.users));
+        body: UserList());
   }
 }
