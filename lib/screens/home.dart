@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../providers/users_model.dart';
 import '../models/user.dart';
 import '../widgets/search_field.dart';
 import '../widgets/sort_dialog.dart';
@@ -18,9 +20,9 @@ class _HomeState extends State<Home> {
   bool expanded = false;
 
   _HomeState() {
-    customIcon = IconButton(icon: Icon(Icons.search), onPressed: _expandSearch);
+    customIcon = IconButton(icon: Icon(Icons.search), onPressed: _toggleSearch);
   }
-  void _expandSearch() {
+  void _toggleSearch() {
     setState(() {
       expanded = !expanded;
       if (expanded) {
@@ -30,13 +32,13 @@ class _HomeState extends State<Home> {
               onPrimary: Colors.transparent,
               shape: new RoundedRectangleBorder(
                   borderRadius: new BorderRadius.circular(30.0))),
-          onPressed: _expandSearch,
+          onPressed: _toggleSearch,
           child: Text('Close', style: TextStyle(color: Colors.white)),
         );
         customSearchBar = SearchField();
       } else {
         customIcon =
-            IconButton(icon: Icon(Icons.search), onPressed: _expandSearch);
+            IconButton(icon: Icon(Icons.search), onPressed: _toggleSearch);
 
         customSearchBar = const Text('Heros');
       }

@@ -18,14 +18,6 @@ class MyApp extends StatelessWidget {
             onPrimary: Colors.black,
             shape: new RoundedRectangleBorder(
                 borderRadius: new BorderRadius.circular(30.0))),
-        // ButtonStyle(
-        //     backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
-        //     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-        //         RoundedRectangleBorder(
-        //       borderRadius: BorderRadius.circular(18.0),
-        //     )))
-        //
-        //ElevatedButton.styleFrom(primary: Colors.green
       ));
 
   @override

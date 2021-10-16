@@ -13,27 +13,32 @@ class UsersModel extends ChangeNotifier {
   // }
 
   final List<User> _users = allUsersData.allUsers;
-  String searchString = "";
+
+  String _searchString = "";
   SortBy _sortByProperty = SortBy.name;
 
-  List<User> get allUsers => searchString.isEmpty
-      ? _users
-      : _users.where((user) {
-          final titleLower = user.name.toLowerCase();
-          final searchLower = searchString.toLowerCase();
+  List<User> get allUsers {
+    if (_sortByProperty == SortBy.name) sortBy(SortBy.name);
 
-          return titleLower.contains(searchLower);
-        }).toList();
+    return _searchString.isEmpty
+        ? _users
+        : _users.where((user) {
+            final titleLower = user.name.toLowerCase();
+            final searchLower = _searchString.toLowerCase();
+
+            return titleLower.contains(searchLower);
+          }).toList();
+  }
 
   SortBy get sortByProperty => _sortByProperty;
 
   void changeSearchString(String query) {
-    searchString = query;
+    _searchString = query;
     notifyListeners();
   }
 
   void updateRating(double rating, int id) {
-    final userIndex = allUsers.indexWhere((user) => user.id == id);
+    final userIndex = _users.indexWhere((user) => user.id == id);
     _users[userIndex].updateRating(rating);
 
     if (_sortByProperty == SortBy.rating) sortBy(SortBy.rating);

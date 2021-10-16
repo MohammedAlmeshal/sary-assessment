@@ -3,74 +3,73 @@ import '../models/user.dart';
 final allUsers = <User>[
   User(
       id: 1,
-      name: 'Ardi Evanss',
-      powers:
-          'Modern Buildings,Modern Buildings,Modern Buildings,Modern Buildings',
+      name: 'Green Lantern',
+      powers: 'Flight, Semi invulnerability, Hard-light construct generation',
       imageURL:
-          'https://images.unsplash.com/photo-1615347497551-277d6616b959?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=692&q=80',
-      rating: 3),
+          'https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_GreenLantern_20200721_5f173ad01724e2.92436411.jpg?itok=S8RLrzrV',
+      rating: 4),
   User(
       id: 2,
-      name: 'Lerone Pieters',
-      powers: 'Busy City Life',
+      name: 'Batman',
+      powers: 'Rich.',
       imageURL:
-          'https://images.unsplash.com/photo-1615346340977-cf7f5a8f3059?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-      rating: 3),
+          'https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_Batman_20190116_5c3fc4b40faec2.47318964.jpg?itok=u4BHrDeE',
+      rating: 5),
   User(
       id: 3,
-      name: 'Uliana Kopanytsia',
-      powers: 'Sweets and Cakes',
-      imageURL:
-          'https://images.unsplash.com/photo-1615351897596-d3a9fffb5797?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=665&q=80',
-      rating: 3),
+      name: 'Nightwing',
+      powers: 'Escape Artist, Agility, Stamina, Stealth',
+      imageURL: 'https://s3.amazonaws.com/comicgeeks/characters/avatars/5.jpg',
+      rating: 5),
   User(
       id: 4,
-      name: 'Riccardo Andolfo',
-      powers: 'Vast Deserts',
+      name: 'Superman',
+      powers: 'Flight, Superhuman strength, speed, Eternal Youth',
       imageURL:
-          'https://images.unsplash.com/photo-1615333619365-a44d7e655661?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1050&q=80',
+          'https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_Superman_20190116_5c3fc2758f6a12.25513240.jpg?itok=IqnLIx3M',
       rating: 3),
   User(
       id: 5,
-      name: 'Miguel Arguibide',
-      powers: 'Parkour',
+      name: 'Green Arrow',
+      powers: 'Super Sight, Tracking, Weapon Master',
       imageURL:
-          'https://images.unsplash.com/photo-1615286505008-cbca9896192f?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=962&q=80',
-      rating: 3),
+          'https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_GreenArrow_5c4915494b4039.94050514.jpg',
+      rating: 2),
   User(
       id: 6,
-      name: 'Tran Mau Tri Tam',
-      powers: 'Cute Kitties',
+      name: 'Flash',
+      powers: 'Super Speed, Cosmic Awareness, Healing, Density Control',
       imageURL:
-          'https://images.unsplash.com/photo-1615369794017-f65e6f0c0393?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
-      rating: 3),
+          'https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_Flash_20190116_5c3fcaaa18f0e8.03668117.jpg?itok=wQUgUOI1',
+      rating: 5),
   User(
       id: 7,
-      name: 'Josh Hemsley',
-      powers: 'Beahces',
+      name: 'Aquaman',
+      powers: 'Sub-Mariner,Super Hearing, Water Control',
       imageURL:
-          'https://images.unsplash.com/photo-1615357633073-a7b67638dedb?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=564&q=80',
+          'https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_Aquaman_5c411a95e71072.35445903.jpg?itok=kpMDtmVP',
       rating: 3),
   User(
       id: 8,
-      name: 'Carlos Mesa',
-      powers: 'Tides',
+      name: 'Shazam',
+      powers: 'Strength of Hercules, Power of Zeus, Speed of Mercury',
       imageURL:
-          'https://images.unsplash.com/photo-1615185054269-363482a365ad?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=809&q=80',
+          'https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_Shazam_5c53a74aefbb99.16521481.jpg?itok=_VZFwUkw',
       rating: 3),
   User(
       id: 9,
-      name: 'Kellen Riggin',
-      powers: 'Magnificent Forests',
+      name: 'Raven',
+      powers:
+          'Telepathy, Thought projection, Spiritual powers, Astral projection',
       imageURL:
-          'https://images.unsplash.com/photo-1615331224984-281512856592?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+          'https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_Raven2_5c525571ef8313.10754657.jpg?itok=v51HN2qI',
       rating: 3),
   User(
     id: 10,
-    name: 'Navi Photography',
-    powers: 'Butterflies',
+    name: 'CatWoman',
+    powers: 'Thievery, Stealth, Peak Human Strength & Reflexes',
     imageURL:
-        'https://images.unsplash.com/photo-1615300236079-4bdb43bd9a9a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80',
+        'https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_Catwoman_5c47c984ed1d66.81377433.jpg?itok=yHAKRa64',
     rating: 3,
   ),
 ];
