@@ -1,16 +1,43 @@
-# sary_assessment
+# Sary Assessment 🚀
 
-A new Flutter project.
+ <strong>A flutter app to show, sort, and rate a list of heros 🦸‍♂️ <strong/>
+
+## Features ⭐
+
+- ### Search heros
+![Search heros](https://media.giphy.com/media/ZS2WovAhqhjabRLrrL/giphy.gif)
+- ### Sort heros by name, powers, and rating
+![Rate a hero](https://media.giphy.com/media/WqmTl9V6DmsmrMNsb8/giphy.gif)
+- ### Rate a hero
+![Rate a hero](https://media.giphy.com/media/8YAupoSJzN9V8HaOi1/giphy.gif)
+
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Dependencies 🏴󠁶󠁥󠁷󠁿
 
-A few resources to get you started if this is your first Flutter project:
+* To run this project, you must have fluter installed connected to a simulator, check [flutter's website](https://flutter.dev/) for more.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+### Installing 👨‍💻
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+* First, clone this repository 
+```
+git clone https://github.com/MohammedAlmeshal/sary-assessment.git
+```
+
+* Then, inside the project dictionary, run:
+```
+flutter packages get
+```
+
+
+
+### Running ▶️
+
+* You can run the project using this command inside the project dictionary
+
+```
+flutter run
+```
+<br/>
+You're all set!, the app should be running now 🎉.
