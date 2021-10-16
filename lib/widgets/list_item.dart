@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../models/user.dart';
 import '../screens/user_profile.dart';
+import './rating_stars.dart';
 
 class ListItem extends StatefulWidget {
   final User user;
@@ -19,20 +20,6 @@ class _ListItemState extends State<ListItem> {
     }));
   }
 
-  Widget _ratingBar() => RatingBar.builder(
-        initialRating: widget.user.rating,
-        itemCount: 5,
-        ignoreGestures: true,
-        direction: Axis.horizontal,
-        itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
-        itemBuilder: (context, _) => Icon(
-          Icons.star,
-          color: Theme.of(context).accentColor,
-        ),
-        itemSize: 20,
-        onRatingUpdate: (rating) {},
-      );
-
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -45,7 +32,7 @@ class _ListItemState extends State<ListItem> {
               image: NetworkImage(widget.user.imageURL), fit: BoxFit.fill),
         ),
       ),
-      trailing: _ratingBar(),
+      trailing: RatingStars(rating: widget.user.rating, size: 20),
       title: Text(widget.user.name),
       subtitle: Text(widget.user.powers),
       onTap: () => _pushProfile(widget.user),

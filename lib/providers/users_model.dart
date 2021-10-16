@@ -6,7 +6,6 @@ enum SortBy { name, powers, rating }
 
 class UsersModel extends ChangeNotifier {
   final List<User> _users = allUsersData.allUsers;
-
   String _searchString = "";
   SortBy _sortByProperty = SortBy.name;
 
@@ -55,7 +54,6 @@ class UsersModel extends ChangeNotifier {
         _users.sort((a, b) => b.rating.compareTo(a.rating));
         break;
     }
-
     notifyListeners();
   }
 }

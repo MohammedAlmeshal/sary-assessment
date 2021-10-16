@@ -8,11 +8,10 @@ class SearchField extends StatelessWidget {
   }) : super(key: key);
 
   final controller = TextEditingController();
+  final style = TextStyle(color: Colors.white12);
 
   @override
   Widget build(BuildContext context) {
-    final style = TextStyle(color: Colors.white12);
-
     void onChanged(String query) {
       Provider.of<UsersModel>(context, listen: false).changeSearchString(query);
     }

@@ -2,15 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/users_model.dart';
 
-class SortDialog extends StatefulWidget {
-  SortDialog({Key? key}) : super(key: key);
+class SortDialog extends StatelessWidget {
+  const SortDialog({Key? key}) : super(key: key);
 
-  @override
-  _SortDialogState createState() => _SortDialogState();
-}
-
-class _SortDialogState extends State<SortDialog> {
-  void _showSortDialog() async {
+  void _showSortDialog(context) async {
     switch (await showDialog<SortBy>(
         context: context,
         builder: (BuildContext context) {
@@ -82,7 +77,7 @@ class _SortDialogState extends State<SortDialog> {
   @override
   Widget build(BuildContext context) {
     return Consumer<UsersModel>(
-        builder: (context, users, child) =>
-            IconButton(icon: Icon(Icons.sort), onPressed: _showSortDialog));
+        builder: (context, users, child) => IconButton(
+            icon: Icon(Icons.sort), onPressed: () => _showSortDialog(context)));
   }
 }
