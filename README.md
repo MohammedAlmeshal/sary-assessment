@@ -7,9 +7,9 @@
 - ### Search heros
 ![Search heros](https://media.giphy.com/media/ZS2WovAhqhjabRLrrL/giphy.gif)
 - ### Sort heros by name, powers, and rating
-![Rate a hero](https://media.giphy.com/media/WqmTl9V6DmsmrMNsb8/giphy.gif)
+![Rate a hero](https://media.giphy.com/media/tqwReqsbUAVFTIFFXO/giphy.gif)
 - ### Rate a hero
-![Rate a hero](https://media.giphy.com/media/8YAupoSJzN9V8HaOi1/giphy.gif)
+![Rate a hero](https://media.giphy.com/media/7cZimoWSlJlOlZVopQ/giphy.gif)
 
 
 ## Getting Started
